@@ -12,8 +12,6 @@ class SwitchFilamentLanguage extends Component
         session()->put('locale', $locale);
 
         if(config('filament-language-switch.store_locale_in_database')) {
-            dd(auth()->user()->locale);
-            dd("lang switch");
             if (auth()->check()) {
                 auth()->user()->update([
                     'locale' => $locale,
