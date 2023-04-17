@@ -11,6 +11,14 @@ class SwitchFilamentLanguage extends Component
     {
         session()->put('locale', $locale);
 
+        if(config('filament-language-switch.store_locale_in_database')) {
+            if (auth()->check()) {
+                auth()->user()->update([
+                    'locale' => $locale,
+                ]);
+            }
+        }
+
         cookie()->queue(cookie()->forever('filament_language_switch_locale', $locale));
 
         $this->redirect(request()->header('Referer'));
