@@ -34,6 +34,10 @@ return [
     | Option to store the locale in the database.
     | If set to true, you need to add the following column to your users table.
     | $table->string('locale')->nullable();
+    | You also need to add the following to your User model.
+    | protected $fillable = [
+    |     'locale',
+    | ];
     */
 
     'store_locale_in_database' => false,
